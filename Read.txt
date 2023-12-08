@@ -1,0 +1,17 @@
+Mạch thu thập và xử lý : DHT11, Noise Sensor, Gas Sensor, Light Sensor, Arduino uno, ESP 8266.
+
+Phần mềm lập trình : Arduino IDE
+
+Mô tả : Đọc dữ liệu từ các sensor bằng Arduino uno rồi hiển thị trên serial monitor.
+
+Giao thức với ESP 8266 Node MCU gửi dữ liệu từ Arduino UNO qua ESP và từ ESP đẩy lên cloud (Dweet.io)
+
+Từ cloud chúng ta có phần backend viết bằng python get.py lấy dữ liệu từ cloud về sql server
+
+Sql server chúng ta sẽ làm 7 table tương ứng với 7 trường hợp (bình thường, gas cao, cháy nổ, độ ẩm cao, nhiệt độ cao, Độ ồn cao, và ánh sáng mạnh) chúng ta sẽ lấy data về 7 table rồi chạy change.py để random nhiệt độ trong sql( sửa tay tốn time)
+
+change2.py là để đổi các giá trị còn lại
+
+sau đó chúng ta sẽ tạo ra 1 bảng sẽ gộp tất cả các dữ liệu chúng ta thu được để train data . sau khi chạy sẽ cho ra 2 model để tiếp tục train
+
+Tiếp đến dùng thuật toán CNN chạy file backend.py để train dataa theo từng trường hợp đã cho
